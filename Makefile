@@ -37,7 +37,7 @@ WHITE = \033[0;97m
 
 #Sources
 
-SRC_FILES =	push_swap parse_input utils
+SRC_FILES =	push_swap parse_input utils operations
 
 SRCS 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))

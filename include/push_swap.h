@@ -30,23 +30,35 @@ typedef struct sint_list
 	struct sint_list	*next;
 }					int_list;
 
-//Local fucntions
+//Local functions
 
 int			ft_init(int argc, char **argv);
 int			ft_checks(char *str, int index);
 void		ft_print_lst(int_list *list);
+void		ft_print_stacks(int_list *stacka, int_list *stackb);
+int			ft_check_sorted(int_list *stack);
+
 int			ft_strtoint(char *str);
 void		ft_intlst_addback(int_list **lst, int_list *new);
 int_list	*ft_intlst_new(int num);
 int_list	*ft_intlst_last(int_list *lst);
 int_list	*ft_parse_input(int argc, char **argv);
 void		ft_intlst_addfront(int_list **lst, int_list *new);
-void		ra(int_list *stacka);
-int_list	*pb(int_list *stacka, int_list *stackb);
-int_list	*pa(int_list **stacka, int_list *stackb);
+
+void		do_pa(int_list **stacka, int_list **stackb);
+void		do_pb(int_list **stacka, int_list **stackb);
+void		do_sb(int_list **stackb);
+void		do_rb(int_list **stackb);
+void		do_rrb(int_list **stackb);
+
 int_list	*ft_pivot(int_list *head, int_list *tail);
 int_list	*ft_quicksort(int_list *stack);
-int_list	*ft_freetop(int_list *lst);
+void 		ft_insertsort(int_list **stacka, int_list **stackb);
+void 		ft_insert(int_list **stackb);
+int			ft_find_index(int_list *stack);
+void		ft_freetop(int_list **stack);
+void 		ft_freebottom(int_list *stack);
+
 
 
 
