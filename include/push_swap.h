@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,9 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
-
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 # include<unistd.h>
 # include<stdarg.h>
 # include<stdlib.h>
@@ -24,47 +23,35 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-typedef struct sint_list
+typedef struct st_int
 {
-	int					num;
-	struct sint_list	*next;
-}					int_list;
+	int				num;
+	struct st_int	*next;
+}					t_int;
 
-//Local functions
-
-int			ft_init(int argc, char **argv);
-int			ft_checks(char *str, int index);
-void		ft_print_lst(int_list *list);
-void		ft_print_stacks(int_list *stacka, int_list *stackb);
-int			ft_check_sorted(int_list *stack);
-
-int			ft_strtoint(char *str);
-void		ft_intlst_addback(int_list **lst, int_list *new);
-int_list	*ft_intlst_new(int num);
-int_list	*ft_intlst_last(int_list *lst);
-int_list	*ft_parse_input(int argc, char **argv);
-void		ft_intlst_addfront(int_list **lst, int_list *new);
-
-void		do_pa(int_list **stacka, int_list **stackb);
-void		do_pb(int_list **stacka, int_list **stackb);
-void		do_sb(int_list **stackb);
-void		do_rb(int_list **stackb);
-void		do_rrb(int_list **stackb);
-
-int_list	*ft_pivot(int_list *head, int_list *tail);
-int_list	*ft_quicksort(int_list *stack);
-void 		ft_insertsort(int_list **stacka, int_list **stackb);
-void 		ft_insert(int_list **stackb);
-int			ft_find_index(int_list *stack);
-void		ft_freetop(int_list **stack);
-void 		ft_freebottom(int_list *stack);
-
-
-
-
-
+//Main functions
+int		ft_init(int argc, char **argv);
+int		ft_checks(char *str, int index);
+t_int	*ft_parse_input(int argc, char **argv);
+void	ft_insertsort(t_int **stacka, t_int **stackb);
+void	ft_insert(t_int **stackb);
+int		ft_find_index(t_int *stack);
+t_int	*ft_pivot(t_int *head, t_int *tail);
+t_int	*ft_quicksort(t_int *stack);
+//Operations functions
+void	do_pa(t_int **stacka, t_int **stackb);
+void	do_pb(t_int **stacka, t_int **stackb);
+void	do_sb(t_int **stackb);
+void	do_rb(t_int **stackb);
+void	do_rrb(t_int **stackb);
+void	ft_freetop(t_int **stack);
+void	ft_freebottom(t_int *stack);
+//Utilities functions
+void	ft_print_lst(t_int *list);
+void	ft_print_stacks(t_int *stacka, t_int *stackb);
+int		ft_check_sorted(t_int *stack);
+int		ft_strtoint(char *str);
 //Libft functions
-
 int		ft_printf(const char *str, ...);
 int		ft_parse(const char c, va_list args);
 int		ft_printf(const char *input, ...);
@@ -90,5 +77,9 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_isdigit(int a);
+void	ft_intlst_addback(t_int **lst, t_int *new);
+t_int	*ft_intlst_new(int num);
+t_int	*ft_intlst_last(t_int *lst);
+void	ft_intlst_addfront(t_int **lst, t_int *new);
 
 #endif

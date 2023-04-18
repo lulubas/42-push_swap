@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../../include/libft.h"
 
-int_list	*ft_intlst_last(int_list *lst)
+t_int	*ft_intlst_last(t_int *lst)
 {
 	if (lst == NULL)
 		return (NULL);

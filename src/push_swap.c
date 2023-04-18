@@ -13,19 +13,19 @@
 
 int	main(int argc, char **argv)
 {
-	int_list	*stacka;
-	int_list	*stackb;
+	t_int	*stacka;
+	t_int	*stackb;
 
 	stacka = ft_parse_input(argc, argv);
 	stackb = NULL;
 	if (!stacka)
 		return (0);
 	ft_insertsort(&stacka, &stackb);
-	ft_print_stacks(stacka, stackb);
 	return (0);
 }
+// 	ft_print_stacks(stacka, stackb);
 
-void ft_insertsort(int_list **stacka, int_list **stackb)
+void	ft_insertsort(t_int **stacka, t_int **stackb)
 {
 	if (ft_check_sorted(*stacka))
 		return ;
@@ -38,14 +38,14 @@ void ft_insertsort(int_list **stacka, int_list **stackb)
 		do_pa(stacka, stackb);
 }
 
-void ft_insert(int_list **stackb)
+void	ft_insert(t_int **stackb)
 {
-	int			insert_index;
-	int			count;
+	int		insert_index;
+	int		count;
 
 	insert_index = ft_find_index(*stackb);
 	count = 0;
-	while(insert_index)
+	while (insert_index)
 	{
 		do_sb(stackb);
 		if (insert_index > 1)
@@ -59,40 +59,40 @@ void ft_insert(int_list **stackb)
 		do_rrb(stackb);
 }
 
-int		ft_find_index(int_list *stack)
+int	ft_find_index(t_int *stack)
 {
-		int_list	*check;
-		int			value;
-		int			i;
-		
-		check = stack->next;
-		value = stack->num;
-		i = 0;
-		while(check)
-		{
-			if(value > check->num)
-				return (i);
-			check = check->next;
-			i++;
-		}
-		return(i);
+	t_int	*check;
+	int		value;
+	int		i;
+
+	check = stack->next;
+	value = stack->num;
+	i = 0;
+	while (check)
+	{
+		if (value > check->num)
+			return (i);
+		check = check->next;
+		i++;
+	}
+	return (i);
 }
 
 /*
-int_list	*ft_quicksort(int_list	*stack)
+t_int	*ft_quicksort(t_int	*stack)
 {
-	int_list	*tail;
-	int_list	*head;
+	t_int	*tail;
+	t_int	*head;
 
 	tail = ft_intlst_last(stack);
 	head = ft_pivot(stack, tail);
 	return (head);
 }
 
-int_list	*ft_pivot(int_list *head, int_list *tail)
+t_int	*ft_pivot(t_int *head, t_int *tail)
 {
-	int_list	*stackb;
-	int_list	*pivot;
+	t_int	*stackb;
+	t_int	*pivot;
 	int			i;
 
 	pivot = tail;

@@ -11,11 +11,11 @@
 /* ************************************************************************** */
 #include "../../include/libft.h"
 
-int_list	*ft_lst_add_int(int num)
+t_int	*ft_lst_add_int(int num)
 {
-	int_list	*lst;
+	t_int	*lst;
 
-	lst = (int_list *)malloc(sizeof(int_list));
+	lst = (t_int *)malloc(sizeof(t_int));
 	if (!lst)
 		return (0);
 	lst->num = num;

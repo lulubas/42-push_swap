@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../../include/libft.h"
 
-void	ft_intlst_addfront(int_list **lst, int_list *new)
+void	ft_intlst_addfront(t_int **lst, t_int *new)
 {
 	new->next = *lst;
 	*lst = new;

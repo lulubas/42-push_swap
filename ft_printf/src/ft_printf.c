@@ -57,5 +57,8 @@ int	ft_parse(const	char c, va_list args)
 		count_chars = ft_puthex(va_arg(args, unsigned int), c);
 	else if (c == '%')
 		count_chars += ft_putchar('%');
+	else if (c == 'E')
+		write(2, "Error\n", 6);
 	return (count_chars);
 }
+

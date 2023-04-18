@@ -21,11 +21,11 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
-typedef struct sint_list
+typedef struct st_int
 {
-	int					num;
-	struct sint_list	*next;
-}					int_list;
+	int				num;
+	struct st_int	*next;
+}					t_int;
 size_t	ft_strlen(const char *str);
 int		ft_isalpha(unsigned char a);
 int		ft_isdigit(unsigned char a);
@@ -72,10 +72,10 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_putchar(char c);
 int		ft_putnbr(int num);
 int		ft_putstr(const char *str);
-void		ft_intlst_addback(int_list **lst, int_list *new);
-int_list	*ft_intlst_new(int num);
-int_list	*ft_intlst_last(int_list *lst);
-void		ft_intlst_addfront(int_list **lst, int_list *new);
-void		ft_intlst_addback(int_list **lst, int_list *new);
+void	ft_intlst_addback(t_int **lst, t_int *new);
+t_int	*ft_intlst_new(int num);
+t_int	*ft_intlst_last(t_int *lst);
+void	ft_intlst_addfront(t_int **lst, t_int *new);
+void	ft_intlst_addback(t_int **lst, t_int *new);
 
 #endif

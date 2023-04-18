@@ -21,7 +21,7 @@ CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra -I
 RM			=	rm -f
 AR			=	ar rcs
-CMD_OUT		=	gcc push_swap.a && ./a.out
+CMD_OUT		=	gcc -o push_swap $(NAME) && ./push_swap
 
 #Colors
 
@@ -37,7 +37,7 @@ WHITE = \033[0;97m
 
 #Sources
 
-SRC_FILES =	push_swap parse_input utils operations
+SRC_FILES =	push_swap parse_input utils operations operations2
 
 SRCS 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
