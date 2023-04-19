@@ -21,9 +21,10 @@ int	main(int argc, char **argv)
 	if (!stacka)
 		return (0);
 	ft_insertsort(&stacka, &stackb);
+	free_list(stacka);
+	free_list(stackb);
 	return (0);
 }
-// 	ft_print_stacks(stacka, stackb);
 
 void	ft_insertsort(t_int **stacka, t_int **stackb)
 {
@@ -114,3 +115,4 @@ t_int	*ft_pivot(t_int *head, t_int *tail)
 	return(head);
 }
 */
+//	ft_print_stacks(stacka, stackb);

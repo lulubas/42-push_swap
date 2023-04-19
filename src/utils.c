@@ -23,6 +23,8 @@ void	ft_print_lst(t_int *list)
 {
 	t_int	*tmp;
 
+	if (!list)
+		ft_printf("List is empty");
 	tmp = list;
 	while (tmp)
 	{
@@ -45,4 +47,26 @@ int	ft_check_sorted(t_int *stack)
 		tmp = tmp->next;
 	}
 	return (sorted);
+}
+
+void	free_node(t_int *node)
+{
+	if (node)
+	{
+		free(node);
+		node = NULL;
+	}
+}
+
+void	free_list(t_int *list)
+{
+	t_int	*tmp;
+
+	tmp = list;
+	while (tmp)
+	{
+		list = list->next;
+		free_node(tmp);
+		tmp = list;
+	}
 }

@@ -12,13 +12,14 @@
 
 #Standard variables
 
-NAME		=	push_swap.a
+NAME		=	push_swap
+EXEC		=	push_swap
 INCLUDE_DIR	= 	include
 PRINTF		=	ft_printf/
 SRC_DIR 	=	src/
 OBJ_DIR		=	obj/
 CC			=	gcc
-CFLAGS		=	-Wall -Werror -Wextra -I
+CFLAGS		=	-Wall -Werror -Wextra
 RM			=	rm -f
 AR			=	ar rcs
 CMD_OUT		=	gcc -o push_swap $(NAME) && ./push_swap
@@ -58,14 +59,12 @@ run:		all
 
 $(NAME):	$(OBJS)
 			@make -C $(PRINTF)
-			@cp ft_printf/libftprintf.a .
-			@mv libftprintf.a $(NAME)
-			@$(AR) $(NAME) $(OBJS)
+			@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(PRINTF)libftprintf.a
 			@echo "$(GREEN)All compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o : $(SRC_DIR)%.c | $(OBJ_F)
 			@echo "$(YELLOW)Compiling: $< $(DEF_COLOR)"
-			@$(CC) $(CFLAGS) $(INCLUDE_DIR) -c $< -o $@
+			@$(CC) $(CFLAGS) -I $(INCLUDE_DIR) -c $< -o $@
 
 $(OBJ_F):
 			@mkdir -p $(OBJ_DIR)

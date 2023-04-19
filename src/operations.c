@@ -59,5 +59,5 @@ void	do_rrb(t_int **stackb)
 	node = ft_intlst_new(ft_intlst_last(*stackb)->num);
 	ft_intlst_addfront(stackb, node);
 	ft_freebottom(*stackb);
-	ft_printf("rbb\n");
+	ft_printf("rrb\n");
 }

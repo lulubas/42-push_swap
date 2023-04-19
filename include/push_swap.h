@@ -31,7 +31,8 @@ typedef struct st_int
 
 //Main functions
 int		ft_init(int argc, char **argv);
-int		ft_checks(char *str, int index);
+int		ft_checks(char *str, t_int *list);
+int		ft_duplicate(int num, t_int *list);
 t_int	*ft_parse_input(int argc, char **argv);
 void	ft_insertsort(t_int **stacka, t_int **stackb);
 void	ft_insert(t_int **stackb);
@@ -46,6 +47,8 @@ void	do_rb(t_int **stackb);
 void	do_rrb(t_int **stackb);
 void	ft_freetop(t_int **stack);
 void	ft_freebottom(t_int *stack);
+void	free_list(t_int *list);
+void	free_node(t_int *node);
 //Utilities functions
 void	ft_print_lst(t_int *list);
 void	ft_print_stacks(t_int *stacka, t_int *stackb);

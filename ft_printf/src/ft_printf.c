@@ -61,4 +61,3 @@ int	ft_parse(const	char c, va_list args)
 		write(2, "Error\n", 6);
 	return (count_chars);
 }
-

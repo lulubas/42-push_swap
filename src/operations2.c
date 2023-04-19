@@ -17,7 +17,7 @@ void	ft_freetop(t_int **lst)
 
 	tmp = *lst;
 	*lst = tmp->next;
-	free(tmp);
+	free_node(tmp);
 }
 
 void	ft_freebottom(t_int *stack)
@@ -32,5 +32,5 @@ void	ft_freebottom(t_int *stack)
 		second_to_last = second_to_last->next;
 	tmp = second_to_last->next;
 	second_to_last->next = NULL;
-	free(tmp);
+	free_node(tmp);
 }

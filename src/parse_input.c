@@ -24,9 +24,10 @@ t_int	*ft_parse_input(int argc, char **argv)
 		return (0);
 	while (i < argc)
 	{
-		if (!ft_checks(argv[i], i))
+		if (!ft_checks(argv[i], stack))
 		{
 			ft_printf("%E");
+			free_list(stack);
 			return (0);
 		}
 		num = ft_strtoint(argv[i]);
@@ -37,12 +38,11 @@ t_int	*ft_parse_input(int argc, char **argv)
 	return (stack);
 }
 
-int	ft_checks(char *str, int index)
+int	ft_checks(char *str, t_int *list)
 {
 	long		num;
 	int			i;
 	int			sign;
-	static int	previous;
 
 	i = 0;
 	num = 0;
@@ -51,6 +51,8 @@ int	ft_checks(char *str, int index)
 	{
 		sign = -1;
 		i++;
+		if (!str[i])
+		return (0);
 	}
 	while (str[i])
 	{
@@ -60,10 +62,23 @@ int	ft_checks(char *str, int index)
 		i++;
 	}
 	if ((num * sign) > 2147483647 || (num * sign) < -2147483648 \
-		|| (num * sign == previous && index != 1))
+		|| ft_duplicate(num * sign, list))
 		return (0);
-	previous = num * sign;
 	return (1);
+}
+
+int	ft_duplicate(int num, t_int *list)
+{
+	t_int	*tmp;
+
+	tmp = list;
+	while (tmp)
+	{
+		if (num == tmp->num)
+			return (1);
+		tmp = tmp->next;
+	}
+	return (0);
 }
 
 int	ft_strtoint(char *str)
