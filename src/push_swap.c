@@ -20,63 +20,18 @@ int	main(int argc, char **argv)
 	stackb = NULL;
 	if (!stacka)
 		return (0);
-	ft_insertsort(&stacka, &stackb);
+	ft_sort(&stacka, &stackb, argc);
 	free_list(stacka);
 	free_list(stackb);
 	return (0);
 }
 
-void	ft_insertsort(t_int **stacka, t_int **stackb)
+void	ft_sort(t_int **stacka, t_int **stackb, int argc)
 {
-	if (ft_check_sorted(*stacka))
-		return ;
-	while (*stacka)
-	{
-		do_pb(stacka, stackb);
-		ft_insert(stackb);
-	}
-	while (*stackb)
-		do_pa(stacka, stackb);
-}
-
-void	ft_insert(t_int **stackb)
-{
-	int		insert_index;
-	int		count;
-
-	insert_index = ft_find_index(*stackb);
-	count = 0;
-	while (insert_index)
-	{
-		do_sb(stackb);
-		if (insert_index > 1)
-		{
-			do_rb(stackb);
-			count++;
-		}
-		insert_index--;
-	}
-	while (count--)
-		do_rrb(stackb);
-}
-
-int	ft_find_index(t_int *stack)
-{
-	t_int	*check;
-	int		value;
-	int		i;
-
-	check = stack->next;
-	value = stack->num;
-	i = 0;
-	while (check)
-	{
-		if (value > check->num)
-			return (i);
-		check = check->next;
-		i++;
-	}
-	return (i);
+	if (argc <= 7)
+		ft_smallsort(stacka, stackb, argc);
+	else
+		ft_insertsort(stacka, stackb);
 }
 
 /*

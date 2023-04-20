@@ -36,17 +36,15 @@ void	ft_print_lst(t_int *list)
 int	ft_check_sorted(t_int *stack)
 {
 	t_int	*tmp;
-	int		sorted;
 
 	tmp = stack;
-	sorted = 1;
 	while (tmp->next)
 	{
 		if (tmp->num > tmp->next->num)
-			sorted = 0;
+			return (0);
 		tmp = tmp->next;
 	}
-	return (sorted);
+	return (1);
 }
 
 void	free_node(t_int *node)

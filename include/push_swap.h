@@ -30,20 +30,25 @@ typedef struct st_int
 }					t_int;
 
 //Main functions
+t_int	*ft_parse_input(int argc, char **argv);
 int		ft_init(int argc, char **argv);
 int		ft_checks(char *str, t_int *list);
 int		ft_duplicate(int num, t_int *list);
-t_int	*ft_parse_input(int argc, char **argv);
+void	ft_sort(t_int **stacka, t_int **stackb, int argc);
+void	ft_smallsort(t_int **stack);
 void	ft_insertsort(t_int **stacka, t_int **stackb);
 void	ft_insert(t_int **stackb);
 int		ft_find_index(t_int *stack);
 t_int	*ft_pivot(t_int *head, t_int *tail);
 t_int	*ft_quicksort(t_int *stack);
+
 //Operations functions
 void	do_pa(t_int **stacka, t_int **stackb);
 void	do_pb(t_int **stacka, t_int **stackb);
+void	do_sa(t_int **stacka);
 void	do_sb(t_int **stackb);
 void	do_rb(t_int **stackb);
+void	do_rra(t_int **stacka);
 void	do_rrb(t_int **stackb);
 void	ft_freetop(t_int **stack);
 void	ft_freebottom(t_int *stack);

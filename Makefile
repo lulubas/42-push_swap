@@ -13,10 +13,9 @@
 #Standard variables
 
 NAME		=	push_swap
-EXEC		=	push_swap
 INCLUDE_DIR	= 	include
 PRINTF		=	ft_printf/
-SRC_DIR 	=	src/
+SRC_DIR 	=	src
 OBJ_DIR		=	obj/
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
@@ -38,10 +37,8 @@ WHITE = \033[0;97m
 
 #Sources
 
-SRC_FILES =	push_swap parse_input utils operations operations2
-
-SRCS 		= 	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJS 		= 	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
+SRCS 		= 	$(wildcard $(SRC_DIR)/*.c)
+OBJS 		=	${SRCS:.c=.o}
 
 #exe
 
