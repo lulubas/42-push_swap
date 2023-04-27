@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-void	ft_smallsort(t_int **stacka, t_int **stackb, argc)
+void	ft_smallsort(t_int **stacka, t_int **stackb, int argc)
 {
 	if (argc < 5)
 		ft_smallsort_a(stacka);

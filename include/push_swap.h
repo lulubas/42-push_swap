@@ -35,7 +35,7 @@ int		ft_init(int argc, char **argv);
 int		ft_checks(char *str, t_int *list);
 int		ft_duplicate(int num, t_int *list);
 void	ft_sort(t_int **stacka, t_int **stackb, int argc);
-void	ft_smallsort(t_int **stack);
+void	ft_smallsort(t_int **stacka, t_int **stackb, int argc);
 void	ft_insertsort(t_int **stacka, t_int **stackb);
 void	ft_insert(t_int **stackb);
 int		ft_find_index(t_int *stack);
