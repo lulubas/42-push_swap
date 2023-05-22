@@ -11,6 +11,16 @@
 /* ************************************************************************** */
 #include "../include/push_swap.h"
 
+void	do_ra(t_int **stacka)
+{
+	t_int	*node;
+
+	node = ft_intlst_new((*stacka)->num);
+	ft_intlst_addback(stacka, node);
+	ft_freetop(stacka);
+	ft_printf("ra\n");
+}
+
 void	do_rb(t_int **stackb)
 {
 	t_int	*node;

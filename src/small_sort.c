@@ -11,15 +11,15 @@
 /* ************************************************************************** */
 
 #include "../include/push_swap.h"
-void	ft_smallsort(t_int **stacka, t_int **stackb, int argc)
+void	ft_smallsort(t_int **stacka, t_int **stackb, int args)
 {
-	if (argc < 5)
+	if (args <= 3)
 		ft_smallsort_a(stacka);
 	else
-		ft_divide(stacka, stackb, argc); 
+		ft_divide(stacka, stackb, args); 
 }
 
-void	ft_smallsort_a(t_int **stacka)
+void	ft_smallsort_a(t_int **stack)
 {
 	t_int	*head;
 	t_int	*second;
@@ -32,43 +32,81 @@ void	ft_smallsort_a(t_int **stacka)
 		do_sa(stack);
 	if (second->num > second->next->num)
 		do_rra(stack);
-	ft_smallsort(stack);
+	ft_smallsort_a(stack);
 }
 
-void ft_divide(t_int **stacka, t_int **stackb, int argc)
+void	ft_smallsort_b(t_int **stack)
 {
-	t_int *head;
-	int	median;
-
-	median = ft_find_median(*stacka, argc);
-
+	t_int	*head;
+	t_int	*second;
+	
+	head = *stack;
+	second = head->next;
+	if (ft_check_sorted_rev(*stack))
+		return ;
+	if (head->num < second->num)
+		do_sb(stack);
+	if (second->num < second->next->num)
+		do_rrb(stack);
+	ft_smallsort_b(stack);
 }
 
-int	ft_find_median(t_int *stack, int argc)
+void ft_divide(t_int **stacka, t_int **stackb, int args)
+{
+	int	median;
+	int i;
+
+	i = 0;
+	median = ft_find_median(*stacka, args);
+	while (i < args)
+	{
+		if ((*stacka)->num < median)
+			do_pb(stacka, stackb);
+		else if (i != args - 1)
+			do_ra(stacka);
+		i++;
+	}
+	ft_smallsort_a(stacka);
+	ft_smallsort_b(stackb);
+	ft_empty_pa(stacka, stackb);
+}
+
+void	ft_empty_pa(t_int **stacka, t_int **stackb)
+{
+	t_int *tmp;
+
+	tmp = *stackb;
+	while (tmp != NULL)
+	{
+		do_pa(stacka, stackb);
+		tmp = tmp->next;
+	}
+}
+
+int	ft_find_median(t_int *stack, int args)
 {
 	int 	*array;
 	t_int	*head;
 	int		i;
-	int		median;
 
 	i = 0;
 	head = stack;
-	array = (int *)malloc(sizeof(int) * (argc - 1));
+	array = (int *)malloc(sizeof(int) * (args));
 	if (!array)
-		return (NULL);
+		return (0);
 	while (head)
 	{
-		array[i++] = head->num;
+		array[i] = head->num;
 		head = head->next;
+		i++;
 	}
-	ft_qsort(array, 0, argc - 1);
-	if (argc % 2 == 0)
-		return (array[(argc / 2) + 1])
-	else
-		return (array[argc / 2]);
+	ft_qsort(array, 0, args - 1);
+	i = array[args / 2];
+	free(array);
+	return (i);
 }
 
-void	*ft_qsort(int *array, int beg, int end)
+void	ft_qsort(int *array, int beg, int end)
 {
 	int	pivot;
 
@@ -80,11 +118,11 @@ void	*ft_qsort(int *array, int beg, int end)
 	}
 }
 
-int	*ft_partition(int *array, int beg, int end)
+int	ft_partition(int *array, int beg, int end)
 {
 	int	pivot;
-	int left;
 	int checker;
+	int greater;
 	
 	pivot = array[end];
 	greater = beg - 1;
@@ -102,7 +140,7 @@ int	*ft_partition(int *array, int beg, int end)
 	return (greater + 1);
 }
 
-void	ft_swap(int *a, int	*b);
+void	ft_swap(int *a, int	*b)
 {
 	int	tmp;
 

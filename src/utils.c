@@ -47,6 +47,20 @@ int	ft_check_sorted(t_int *stack)
 	return (1);
 }
 
+int	ft_check_sorted_rev(t_int *stack)
+{
+	t_int	*tmp;
+
+	tmp = stack;
+	while (tmp->next)
+	{
+		if (tmp->num < tmp->next->num)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
+
 void	free_node(t_int *node)
 {
 	if (node)

@@ -21,7 +21,7 @@ CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
 RM			=	rm -f
 AR			=	ar rcs
-CMD_OUT		=	gcc -o push_swap $(NAME) && ./push_swap
+CMD_OUT		=	./$(NAME)
 
 #Colors
 

@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 	if (!stacka)
 		return (0);
 	ft_sort(&stacka, &stackb, argc);
+//	ft_print_stacks(stacka, stackb);
 	free_list(stacka);
 	free_list(stackb);
 	return (0);
@@ -28,8 +29,11 @@ int	main(int argc, char **argv)
 
 void	ft_sort(t_int **stacka, t_int **stackb, int argc)
 {
-	if (argc <= 7)
-		ft_smallsort(stacka, stackb, argc);
+	int	args;
+
+	args = argc - 1;
+	if (args <= 6)
+		ft_smallsort(stacka, stackb, args);
 	else
 		ft_insertsort(stacka, stackb);
 }
