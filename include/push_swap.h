@@ -36,9 +36,10 @@ int		ft_checks(char *str, t_int *list);
 int		ft_duplicate(int num, t_int *list);
 void	ft_sort(t_int **stacka, t_int **stackb, int argc);
 void	ft_smallsort(t_int **stacka, t_int **stackb, int argc);
-void	ft_smallsort_a(t_int **stack);
-void	ft_smallsort_b(t_int **stack);
-void 	ft_divide(t_int **stacka, t_int **stackb, int argc);
+void	ft_minisort(t_int **stack);
+void	ft_minisort_rev(t_int **stack);
+void 	ft_mediumsort(t_int **stacka, t_int **stackb, int argc);
+void 	ft_split(t_int **stacka, t_int **stackb, int args);
 void	ft_empty_pa(t_int **stacka, t_int **stackb);
 void	ft_insertsort(t_int **stacka, t_int **stackb);
 int		ft_find_median(t_int *stack, int argc);
@@ -99,5 +100,7 @@ void	ft_intlst_addback(t_int **lst, t_int *new);
 t_int	*ft_intlst_new(int num);
 t_int	*ft_intlst_last(t_int *lst);
 void	ft_intlst_addfront(t_int **lst, t_int *new);
+int		ft_intlst_size(t_int *lst);
+
 
 #endif

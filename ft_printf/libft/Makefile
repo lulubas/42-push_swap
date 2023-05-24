@@ -57,7 +57,7 @@ FTSTR		=	ft_split ft_strchr ft_strdup ft_striteri ft_strjoin \
 LST_DIR		=	lst/
 FTLST		=	ft_lstadd_back ft_lstadd_front ft_lstclear ft_lstdelone ft_lstiter \
 				ft_lstlast ft_lstmap ft_lstnew ft_lstsize ft_intlst_addback \
-				ft_intlst_addfront ft_intlst_last ft_intlst_new
+				ft_intlst_addfront ft_intlst_last ft_intlst_new ft_intlst_size
 
 SRC_FILES+=$(addprefix $(IS_DIR),$(FTIS))
 SRC_FILES+=$(addprefix $(MEM_DIR),$(FTMEM))

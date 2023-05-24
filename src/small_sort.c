@@ -14,12 +14,12 @@
 void	ft_smallsort(t_int **stacka, t_int **stackb, int args)
 {
 	if (args <= 3)
-		ft_smallsort_a(stacka);
+		ft_minisort(stacka);
 	else
-		ft_divide(stacka, stackb, args); 
+		ft_mediumsort(stacka, stackb, args); 
 }
 
-void	ft_smallsort_a(t_int **stack)
+void	ft_minisort(t_int **stack)
 {
 	t_int	*head;
 	t_int	*second;
@@ -32,10 +32,10 @@ void	ft_smallsort_a(t_int **stack)
 		do_sa(stack);
 	if (second->num > second->next->num)
 		do_rra(stack);
-	ft_smallsort_a(stack);
+	ft_minisort(stack);
 }
 
-void	ft_smallsort_b(t_int **stack)
+void	ft_minisort_rev(t_int **stack)
 {
 	t_int	*head;
 	t_int	*second;
@@ -48,10 +48,18 @@ void	ft_smallsort_b(t_int **stack)
 		do_sb(stack);
 	if (second->num < second->next->num)
 		do_rrb(stack);
-	ft_smallsort_b(stack);
+	ft_minisort_rev(stack);
 }
 
-void ft_divide(t_int **stacka, t_int **stackb, int args)
+void ft_mediumsort(t_int **stacka, t_int **stackb, int args)
+{	
+	ft_split(stacka, stackb, args);
+	ft_minisort(stacka);
+	ft_minisort_rev(stackb);
+	ft_empty_pa(stacka, stackb);
+}
+
+void ft_split(t_int **stacka, t_int **stackb, int args)
 {
 	int	median;
 	int i;
@@ -66,9 +74,6 @@ void ft_divide(t_int **stacka, t_int **stackb, int args)
 			do_ra(stacka);
 		i++;
 	}
-	ft_smallsort_a(stacka);
-	ft_smallsort_b(stackb);
-	ft_empty_pa(stacka, stackb);
 }
 
 void	ft_empty_pa(t_int **stacka, t_int **stackb)

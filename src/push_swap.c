@@ -35,7 +35,7 @@ void	ft_sort(t_int **stacka, t_int **stackb, int argc)
 	if (args <= 6)
 		ft_smallsort(stacka, stackb, args);
 	else
-		ft_insertsort(stacka, stackb);
+		ft_bigsort(stacka, stackb, args);
 }
 
 /*
