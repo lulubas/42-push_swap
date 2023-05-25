@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   sort_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,29 +11,49 @@
 /* ************************************************************************** */
 #include "../include/push_swap.h"
 
-int	main(int argc, char **argv)
+int ft_split(t_int **stacka, t_int **stackb, int len)
 {
-	t_int	*stacka;
-	t_int	*stackb;
+	int	median;
+	int i;
+	int count;
 
-	stacka = ft_parse_input(argc, argv);
-	stackb = NULL;
-	if (!stacka)
-		return (0);
-	ft_sort(&stacka, &stackb, argc);
-	ft_print_stacks(stacka, stackb);
-	free_list(stacka);
-	free_list(stackb);
-	return (0);
+	i = 0;
+	count = 0;
+	median = ft_find_median(*stacka, len);
+//	ft_printf("median=%d\n", median);
+	while (i < len)
+	{
+		if ((*stacka)->num < median)
+		{
+			do_pb(stacka, stackb);
+			count++;
+		}
+		else if (i != len - 1)
+			do_ra(stacka);
+		i++;
+	}
+	return(count);
 }
 
-void	ft_sort(t_int **stacka, t_int **stackb, int argc)
+int	ft_find_median(t_int *stack, int len)
 {
-	int	args;
+	int 	*array;
+	t_int	*head;
+	int		i;
 
-	args = argc - 1;
-	if (args <= 6)
-		ft_smallsort(stacka, stackb, args);
-	else
-		ft_bigsort(stacka, stackb);
+	i = 0;
+	head = stack;
+	array = (int *)malloc(sizeof(int) * (len));
+	if (!array)
+		return (0);
+	while (head && i < len)
+	{
+		array[i] = head->num;
+		head = head->next;
+		i++;
+	}
+	ft_qsort(array, 0, len - 1);
+	i = array[len / 2];
+	free(array);
+	return (i);
 }

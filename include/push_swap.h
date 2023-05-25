@@ -39,10 +39,10 @@ void	ft_smallsort(t_int **stacka, t_int **stackb, int argc);
 void	ft_minisort(t_int **stack);
 void	ft_minisort_rev(t_int **stack);
 void 	ft_mediumsort(t_int **stacka, t_int **stackb, int argc);
-void 	ft_split(t_int **stacka, t_int **stackb, int args);
+int 	ft_split(t_int **stacka, t_int **stackb, int len);
 void	ft_empty_pa(t_int **stacka, t_int **stackb);
 void	ft_insertsort(t_int **stacka, t_int **stackb);
-int		ft_find_median(t_int *stack, int argc);
+int		ft_find_median(t_int *stack, int len);
 int		ft_partition(int *array, int beg, int end);
 void	ft_qsort(int *array, int beg, int end);
 void	ft_swap(int *a, int	*b);
@@ -50,6 +50,13 @@ void	ft_insert(t_int **stackb);
 int		ft_find_index(t_int *stack);
 t_int	*ft_pivot(t_int *head, t_int *tail);
 t_int	*ft_quicksort(t_int *stack);
+void	ft_bigsort(t_int **stacka, t_int **stackb);
+int 	ft_sort_a(t_int **stacka, t_int **stackb, int sorted,t_int **partition_b);
+void 	ft_sort_b(t_int **stacka, t_int **stackb, t_int **partition_b);
+void	ft_nanosort_a(t_int **stacka, int sorted);
+void	ft_nanosort_b(t_int **stacka, t_int **stackb, t_int **partition_b);
+int 	ft_split_b(t_int **stacka,t_int **stackb, int len);
+
 
 //Operations functions
 void	do_pa(t_int **stacka, t_int **stackb);

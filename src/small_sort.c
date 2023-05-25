@@ -59,23 +59,6 @@ void ft_mediumsort(t_int **stacka, t_int **stackb, int args)
 	ft_empty_pa(stacka, stackb);
 }
 
-void ft_split(t_int **stacka, t_int **stackb, int args)
-{
-	int	median;
-	int i;
-
-	i = 0;
-	median = ft_find_median(*stacka, args);
-	while (i < args)
-	{
-		if ((*stacka)->num < median)
-			do_pb(stacka, stackb);
-		else if (i != args - 1)
-			do_ra(stacka);
-		i++;
-	}
-}
-
 void	ft_empty_pa(t_int **stacka, t_int **stackb)
 {
 	t_int *tmp;
@@ -86,29 +69,6 @@ void	ft_empty_pa(t_int **stacka, t_int **stackb)
 		do_pa(stacka, stackb);
 		tmp = tmp->next;
 	}
-}
-
-int	ft_find_median(t_int *stack, int args)
-{
-	int 	*array;
-	t_int	*head;
-	int		i;
-
-	i = 0;
-	head = stack;
-	array = (int *)malloc(sizeof(int) * (args));
-	if (!array)
-		return (0);
-	while (head)
-	{
-		array[i] = head->num;
-		head = head->next;
-		i++;
-	}
-	ft_qsort(array, 0, args - 1);
-	i = array[args / 2];
-	free(array);
-	return (i);
 }
 
 void	ft_qsort(int *array, int beg, int end)

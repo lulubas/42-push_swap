@@ -44,7 +44,7 @@ void	do_rra(t_int **stacka)
 void	do_rrb(t_int **stackb)
 {
 	t_int	*node;
-
+	
 	node = ft_intlst_new(ft_intlst_last(*stackb)->num);
 	ft_intlst_addfront(stackb, node);
 	ft_freebottom(*stackb);

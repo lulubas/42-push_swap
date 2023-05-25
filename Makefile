@@ -15,7 +15,7 @@
 NAME		=	push_swap
 INCLUDE_DIR	= 	include
 PRINTF		=	ft_printf/
-SRC_DIR 	=	src
+SRC_DIR 	=	src/
 OBJ_DIR		=	obj/
 CC			=	gcc
 CFLAGS		=	-Wall -Werror -Wextra
@@ -37,8 +37,8 @@ WHITE = \033[0;97m
 
 #Sources
 
-SRCS 		= 	$(wildcard $(SRC_DIR)/*.c)
-OBJS 		=	${SRCS:.c=.o}
+SRCS 		= 	$(wildcard $(SRC_DIR)*.c)
+OBJS 		=	$(patsubst $(SRC_DIR)%.c,$(OBJ_DIR)/%.o,$(SRCS))
 
 #exe
 
