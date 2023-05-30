@@ -18,20 +18,24 @@ void	ft_bigsort(t_int **stacka, t_int **stackb)
 
 	partition_b = NULL;
 	sorted += ft_sort_a(stacka, stackb, sorted, &partition_b);
+	ft_printf("Sorted = %d\n", sorted);
 	ft_sort_b(stacka, stackb, &partition_b);
 }
 
 int ft_sort_a(t_int **stacka, t_int **stackb, int sorted, t_int **partition_b)
 {
+	int remain;
 	int pushed;
 
-	while (ft_intlst_size(*stacka) > 2)
+	while (ft_intlst_size(*stacka) - sorted > 2)
 	{
-			pushed = ft_split(stacka, stackb, ft_intlst_size(*stacka));
+			pushed = ft_split(stacka, stackb, ft_intlst_size(*stacka) - sorted);
 			ft_intlst_addfront(partition_b, ft_intlst_new(pushed));
 	}
-	ft_nanosort_a(stacka, ft_intlst_size(*stacka) - sorted);
-	return (pushed);
+	remain = ft_intlst_size(*stacka) - sorted;
+	ft_nanosort_a(stacka, remain);
+	ft_printf("Remain = %d\n", remain);
+	return (remain);
 }
 
 void ft_sort_b(t_int **stacka, t_int **stackb, t_int **partition_b)
@@ -60,7 +64,7 @@ int ft_split_b(t_int **stacka,t_int **stackb, int len)
 			do_pa(stacka, stackb);
 			count_pa++;
 		}
-		else if (i != len - 1)
+		else 								// if (i != len - 1)
 		{
 			do_rb(stackb);
 			count_rb++;
@@ -77,6 +81,7 @@ int ft_split_b(t_int **stacka,t_int **stackb, int len)
 
 void	ft_nanosort_a(t_int **stacka, int len)
 {
+	ft_printf("nanosort_a = %d\n", len);
 	if(len == 1)
 		return ;
 	if ((*stacka)->num > (*stacka)->next->num)
