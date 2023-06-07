@@ -57,15 +57,3 @@ char	*ft_itoa(int m)
 	}
 	return (str);
 }
-/* Main
-#include<stdio.h>
-int	main(void)
-{
-	int	n;
-
-	n = 125434;
-	printf("The number is: %d\n", n);
-	printf("The resulted string is: >%s<\n", ft_itoa(n));
-	return (0);
-}
-*/

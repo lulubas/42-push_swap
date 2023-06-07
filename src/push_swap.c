@@ -21,7 +21,6 @@ int	main(int argc, char **argv)
 	if (!stacka)
 		return (0);
 	ft_sort(&stacka, &stackb, argc);
-	ft_print_stacks(stacka, stackb);
 	free_list(stacka);
 	free_list(stackb);
 	return (0);
@@ -36,4 +35,26 @@ void	ft_sort(t_int **stacka, t_int **stackb, int argc)
 		ft_smallsort(stacka, stackb, args);
 	else
 		ft_bigsort(stacka, stackb);
+}
+
+void	free_node(t_int *node)
+{
+	if (node)
+	{
+		free(node);
+		node = NULL;
+	}
+}
+
+void	free_list(t_int *list)
+{
+	t_int	*tmp;
+
+	tmp = list;
+	while (tmp)
+	{
+		list = list->next;
+		free_node(tmp);
+		tmp = list;
+	}
 }

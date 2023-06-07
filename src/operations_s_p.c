@@ -33,14 +33,17 @@ void	do_sb(t_int **stackb)
 	ft_printf("sb\n");
 }
 
-void	do_pa(t_int **stacka, t_int **stackb)
+void	do_pa(t_int **stacka, t_int **stackb, int num)
 {
 	t_int	*node;
 
-	node = ft_intlst_new((*stackb)->num);
-	ft_intlst_addfront(stacka, node);
-	ft_freetop(stackb);
-	ft_printf("pa\n");
+	while (num--)
+	{
+		node = ft_intlst_new((*stackb)->num);
+		ft_intlst_addfront(stacka, node);
+		ft_freetop(stackb);
+		ft_printf("pa\n");
+	}
 }
 
 void	do_pb(t_int **stacka, t_int **stackb)

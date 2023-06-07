@@ -52,7 +52,7 @@ int	ft_checks(char *str, t_int *list)
 		sign = -1;
 		i++;
 		if (!str[i])
-		return (0);
+			return (0);
 	}
 	while (str[i])
 	{

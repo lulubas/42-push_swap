@@ -33,52 +33,32 @@ void	ft_print_lst(t_int *list)
 	}
 }
 
-int	ft_check_sorted(t_int *stack)
+int	ft_check_sorted(t_int *stack, int len)
 {
 	t_int	*tmp;
 
 	tmp = stack;
-	while (tmp->next)
+	while (tmp->next && len)
 	{
 		if (tmp->num > tmp->next->num)
 			return (0);
 		tmp = tmp->next;
+		len--;
 	}
 	return (1);
 }
 
-int	ft_check_sorted_rev(t_int *stack)
+int	ft_check_sorted_rev(t_int *stack, int len)
 {
 	t_int	*tmp;
 
 	tmp = stack;
-	while (tmp->next)
+	while (tmp->next && len)
 	{
 		if (tmp->num < tmp->next->num)
 			return (0);
 		tmp = tmp->next;
+		len--;
 	}
 	return (1);
-}
-
-void	free_node(t_int *node)
-{
-	if (node)
-	{
-		free(node);
-		node = NULL;
-	}
-}
-
-void	free_list(t_int *list)
-{
-	t_int	*tmp;
-
-	tmp = list;
-	while (tmp)
-	{
-		list = list->next;
-		free_node(tmp);
-		tmp = list;
-	}
 }
