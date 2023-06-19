@@ -34,7 +34,7 @@ void	ft_sort(t_int **stacka, t_int **stackb, int argc)
 	if (args <= 6)
 		ft_smallsort(stacka, stackb, args);
 	else
-		ft_bigsort(stacka, stackb);
+		ft_normalsort(stacka, stackb);
 }
 
 void	free_node(t_int *node)

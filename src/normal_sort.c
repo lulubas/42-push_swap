@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   big_sort.c                                         :+:      :+:    :+:   */
+/*   normal_sort.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 #include "../include/push_swap.h"
 
-void	ft_bigsort(t_int **stacka, t_int **stackb)
+void	ft_normalsort(t_int **stacka, t_int **stackb)
 {
 	static int	sorted;
 	t_int		*partition_b;

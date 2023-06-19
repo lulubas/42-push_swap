@@ -49,7 +49,7 @@ void	ft_insert(t_int **stackb);
 int		ft_find_index(t_int *stack);
 t_int	*ft_pivot(t_int *head, t_int *tail);
 t_int	*ft_quicksort(t_int *stack);
-void	ft_bigsort(t_int **stacka, t_int **stackb);
+void	ft_normalsort(t_int **stacka, t_int **stackb);
 int		ft_sort_a(t_int **stacka, t_int **stackb, \
 			int sorted, t_int **partition_b);
 void	ft_sort_b(t_int **stacka, t_int **stackb, t_int **partition_b);
