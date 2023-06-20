@@ -6,7 +6,7 @@
 /*   By: lbastien <lbastien@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/22 15:28:11 by lbastien          #+#    #+#             */
-/*   Updated: 2023/03/22 15:28:16 by lbastien         ###   ########.fr       */
+/*   Updated: 2023/06/20 11:44:45 by lbastien         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "../include/push_swap.h"
@@ -20,7 +20,8 @@ int	main(int argc, char **argv)
 	stackb = NULL;
 	if (!stacka)
 		return (0);
-	ft_sort(&stacka, &stackb, argc);
+	if (!ft_check_sorted(stacka, argc - 1))
+		ft_sort(&stacka, &stackb, argc);
 	free_list(stacka);
 	free_list(stackb);
 	return (0);
